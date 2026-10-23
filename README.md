@@ -239,6 +239,7 @@ results/       per-run configurations, training histories and per-case metrics
   fixed_workload_rtx4090/    fixed-workload training throughput and memory measurements
   revision_v2/               FP32 reruns, controls, recipe sensitivity, readout study,
                              common improved protocol and external evaluation
+  summary/                   per_case_test.csv (test Dice/IoU of every run and case) and runs.csv
 assets/        figure shown in this README
 tests/         CPU unit tests (synthetic tensors only)
 ```
@@ -276,7 +277,8 @@ available from the corresponding author upon reasonable request.
 
 ## Citation
 
-The paper is under review. Citation details will be added after publication.
+The paper is under review. Citation details will be added after publication; `CITATION.cff`
+provides the metadata used by GitHub's "Cite this repository" button.
 
 ```bibtex
 @article{be2026adadinola,

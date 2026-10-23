@@ -1,0 +1,70 @@
+run,test_cases,mean_dice_3d,gpu,torch
+E2_Large_Full_FT/seed2026,31,0.911023,NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb,2.8.0+cu128
+E2_Large_Full_FT/seed3407,31,0.903594,NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb,2.8.0+cu128
+E2_Large_Full_FT/seed42,31,0.905192,NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb,2.8.0+cu128
+E3_Large_Partial_FT/seed2026,31,0.883663,NVIDIA GeForce RTX 4090,2.11.0+cu128
+E3_Large_Partial_FT/seed3407,31,0.887516,NVIDIA GeForce RTX 4090,2.11.0+cu128
+E3_Large_Partial_FT/seed42,31,0.884178,NVIDIA GeForce RTX 4090,2.11.0+cu128
+E4_Giant_LoRA/seed2026,31,0.902253,NVIDIA RTX 4000 Ada Generation,2.11.0+cu128
+E4_Giant_LoRA/seed3407,31,0.902560,NVIDIA RTX 4000 Ada Generation,2.11.0+cu128
+E4_Giant_LoRA/seed42,31,0.903190,NVIDIA RTX 4000 Ada Generation,2.11.0+cu128
+E7_Giant_Partial_FT/seed2026,31,0.889388,NVIDIA GeForce RTX 4090,2.11.0+cu126
+E7_Giant_Partial_FT/seed3407,31,0.892121,NVIDIA GeForce RTX 4090,2.11.0+cu126
+E7_Giant_Partial_FT/seed42,31,0.891697,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e0_seed2026,31,0.880733,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e0_seed3407,31,0.882864,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e0_seed42,31,0.879275,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e1_seed2026,31,0.873759,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e1_seed3407,31,0.872734,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e1_seed42,31,0.877499,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e5_seed2026,31,0.877131,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e5_seed3407,31,0.871158,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e5_seed42,31,0.877748,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e6_seed2026,31,0.900989,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e6_seed3407,31,0.900086,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fp32_loss/e6_seed42,31,0.896571,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/fullft_clip/e2_seed2026,31,0.912868,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/fullft_clip/e2_seed3407,31,0.912824,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/fullft_clip/e2_seed42,31,0.911885,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/fullft_noclip_5090/e2_noclip_seed42,31,0.906370,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/lora_lr1e-4/e4_seed2026,31,0.905374,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/lora_lr1e-4/e4_seed3407,31,0.904578,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/lora_lr1e-4/e4_seed42,31,0.905942,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/lora_lr1e-4/e6_seed2026,31,0.904745,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/lora_lr1e-4/e6_seed3407,31,0.903658,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/lora_lr1e-4/e6_seed42,31,0.902913,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/lora_lr_sweep_seed42/lr1e-4,31,0.902683,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/lora_lr_sweep_seed42/lr1e-5,31,0.900534,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/no_pretraining/e2rand_seed2026,31,0.787797,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/no_pretraining/e2rand_seed3407,31,0.740980,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/no_pretraining/e2rand_seed42,31,0.762929,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/no_pretraining_tuned/e2rand_tuned_seed2026,31,0.735905,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/no_pretraining_tuned/e2rand_tuned_seed3407,31,0.738109,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/no_pretraining_tuned/e2rand_tuned_seed42,31,0.722499,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_FR/seed2026,31,0.903609,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_FR/seed3407,31,0.902364,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_FR/seed42,31,0.903751,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_FU/seed2026,31,0.910862,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_FU/seed3407,31,0.910930,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_FU/seed42,31,0.912789,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_LO/seed2026,31,0.911965,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_LO/seed3407,31,0.911934,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_LO/seed42,31,0.910694,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_PA/seed2026,31,0.906969,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_PA/seed3407,31,0.907899,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/protocol_v2/V_PA/seed42,31,0.908946,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/readout/F0/seed2026,31,0.875199,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/readout/F0/seed3407,31,0.876551,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/readout/F0/seed42,31,0.875334,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/readout/F1/seed2026,31,0.897447,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/readout/F1/seed3407,31,0.899454,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/readout/F1/seed42,31,0.897314,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/readout/L0/seed2026,31,0.897927,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/readout/L0/seed3407,31,0.894059,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/readout/L0/seed42,31,0.899364,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/readout/L1/seed2026,31,0.906601,NVIDIA GeForce RTX 4090,2.11.0+cu126
+revision_v2/readout/L1/seed3407,31,0.902146,NVIDIA GeForce RTX 5090,2.11.0+cu128
+revision_v2/readout/L1/seed42,31,0.904421,NVIDIA GeForce RTX 4090,2.11.0+cu126
+nnUNet_ResEncM_3D/seed2026,31,0.930367,,
+nnUNet_ResEncM_3D/seed3407,31,0.930445,,
+nnUNet_ResEncM_3D/seed42,31,0.930639,,

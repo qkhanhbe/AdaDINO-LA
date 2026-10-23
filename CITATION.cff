@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper."
+title: "AdaDINO-LA: A Controlled Study of DINOv2 Adaptation Strategies for Left Atrial Segmentation in LGE-MRI"
+type: software
+license: MIT
+repository-code: "https://github.com/qkhanhbe/AdaDINO-LA"
+authors:
+  - family-names: Be
+    given-names: Quoc Khanh
+  - family-names: Tran
+    given-names: Nam Hai
+  - family-names: Nguyen
+    given-names: Gia Duc Trung
+  - family-names: Dao Thi Thuy
+    given-names: Quynh
+preferred-citation:
+  type: article
+  title: "AdaDINO-LA: A Controlled Study of DINOv2 Adaptation Strategies for Left Atrial Segmentation in LGE-MRI"
+  authors:
+    - family-names: Be
+      given-names: Quoc Khanh
+    - family-names: Tran
+      given-names: Nam Hai
+    - family-names: Nguyen
+      given-names: Gia Duc Trung
+    - family-names: Dao Thi Thuy
+      given-names: Quynh
+  year: 2026
+  notes: "Under review"
