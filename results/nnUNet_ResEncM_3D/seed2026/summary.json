@@ -1,0 +1,266 @@
+{
+  "foreground_mean": {
+    "Dice": 0.9299473047135126,
+    "FN": 19227.8,
+    "FP": 9111.0,
+    "IoU": 0.8695748034237702,
+    "TN": 32634059.133333333,
+    "TP": 186429.8,
+    "n_pred": 195540.8,
+    "n_ref": 205657.6
+  },
+  "mean": {
+    "1": {
+      "Dice": 0.9299473047135126,
+      "FN": 19227.8,
+      "FP": 9111.0,
+      "IoU": 0.8695748034237702,
+      "TN": 32634059.133333333,
+      "TP": 186429.8,
+      "n_pred": 195540.8,
+      "n_ref": 205657.6
+    }
+  },
+  "metric_per_case": [
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9026164134487966,
+          "FN": 42191,
+          "FP": 2049,
+          "IoU": 0.8225167794658653,
+          "TN": 35795537,
+          "TP": 205023,
+          "n_pred": 207072,
+          "n_ref": 247214
+        }
+      },
+      "prediction_file": "<path>/7FUCNXB39F78WTOP5K71.nii.gz",
+      "reference_file": "<path>/7FUCNXB39F78WTOP5K71.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9484568935904281,
+          "FN": 20034,
+          "FP": 4874,
+          "IoU": 0.9019667266222444,
+          "TN": 35790723,
+          "TP": 229169,
+          "n_pred": 234043,
+          "n_ref": 249203
+        }
+      },
+      "prediction_file": "<path>/8GYK8A9MBRC9TV0FVSRA.nii.gz",
+      "reference_file": "<path>/8GYK8A9MBRC9TV0FVSRA.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9261172640741658,
+          "FN": 6558,
+          "FP": 5970,
+          "IoU": 0.8624007380803321,
+          "TN": 29105241,
+          "TP": 78519,
+          "n_pred": 84489,
+          "n_ref": 85077
+        }
+      },
+      "prediction_file": "<path>/8M99G0JLAXG9GLPV0O8G.nii.gz",
+      "reference_file": "<path>/8M99G0JLAXG9GLPV0O8G.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9426322755833021,
+          "FN": 11002,
+          "FP": 7505,
+          "IoU": 0.8914895488258919,
+          "TN": 35874245,
+          "TP": 152048,
+          "n_pred": 159553,
+          "n_ref": 163050
+        }
+      },
+      "prediction_file": "<path>/A878KB79QDIBFOTWB0T8.nii.gz",
+      "reference_file": "<path>/A878KB79QDIBFOTWB0T8.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.948674601904976,
+          "FN": 11172,
+          "FP": 12570,
+          "IoU": 0.9023605856226353,
+          "TN": 35801640,
+          "TP": 219418,
+          "n_pred": 231988,
+          "n_ref": 230590
+        }
+      },
+      "prediction_file": "<path>/AT5CRO5JUDBWD4RUPXSQ.nii.gz",
+      "reference_file": "<path>/AT5CRO5JUDBWD4RUPXSQ.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9161820621784835,
+          "FN": 15689,
+          "FP": 11293,
+          "IoU": 0.8453283805396481,
+          "TN": 29021841,
+          "TP": 147465,
+          "n_pred": 158758,
+          "n_ref": 163154
+        }
+      },
+      "prediction_file": "<path>/AY8LY0Z1KBIZ6LMDOAZO.nii.gz",
+      "reference_file": "<path>/AY8LY0Z1KBIZ6LMDOAZO.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9380458121515077,
+          "FN": 22001,
+          "FP": 7199,
+          "IoU": 0.8833204133334399,
+          "TN": 28946030,
+          "TP": 221058,
+          "n_pred": 228257,
+          "n_ref": 243059
+        }
+      },
+      "prediction_file": "<path>/BNK95S2SJXEGSW7VAKYU.nii.gz",
+      "reference_file": "<path>/BNK95S2SJXEGSW7VAKYU.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9126082623329296,
+          "FN": 20358,
+          "FP": 5685,
+          "IoU": 0.8392635613462286,
+          "TN": 29034265,
+          "TP": 135980,
+          "n_pred": 141665,
+          "n_ref": 156338
+        }
+      },
+      "prediction_file": "<path>/C26SF3UO4WM0Z4K04CIB.nii.gz",
+      "reference_file": "<path>/C26SF3UO4WM0Z4K04CIB.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.8880500235101397,
+          "FN": 33133,
+          "FP": 25913,
+          "IoU": 0.7986420632999022,
+          "TN": 28903049,
+          "TP": 234193,
+          "n_pred": 260106,
+          "n_ref": 267326
+        }
+      },
+      "prediction_file": "<path>/CLXFYOBQDCVXQ9P7YC07.nii.gz",
+      "reference_file": "<path>/CLXFYOBQDCVXQ9P7YC07.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9428910532725543,
+          "FN": 5600,
+          "FP": 12829,
+          "IoU": 0.8919525808494172,
+          "TN": 35874236,
+          "TP": 152135,
+          "n_pred": 164964,
+          "n_ref": 157735
+        }
+      },
+      "prediction_file": "<path>/GT8QWVDGJSPJ2HR7KHIV.nii.gz",
+      "reference_file": "<path>/GT8QWVDGJSPJ2HR7KHIV.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9544971592346452,
+          "FN": 11081,
+          "FP": 4208,
+          "IoU": 0.9129551083150673,
+          "TN": 35869155,
+          "TP": 160356,
+          "n_pred": 164564,
+          "n_ref": 171437
+        }
+      },
+      "prediction_file": "<path>/MVKIPGBKTNSENNP1S4HB.nii.gz",
+      "reference_file": "<path>/MVKIPGBKTNSENNP1S4HB.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.929092854670676,
+          "FN": 36531,
+          "FP": 8131,
+          "IoU": 0.8675755491247212,
+          "TN": 35707536,
+          "TP": 292602,
+          "n_pred": 300733,
+          "n_ref": 329133
+        }
+      },
+      "prediction_file": "<path>/O2ZVEXE0D3QYA5B45XLH.nii.gz",
+      "reference_file": "<path>/O2ZVEXE0D3QYA5B45XLH.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9328624217899405,
+          "FN": 26622,
+          "FP": 6245,
+          "IoU": 0.8741725910867626,
+          "TN": 28935081,
+          "TP": 228340,
+          "n_pred": 234585,
+          "n_ref": 254962
+        }
+      },
+      "prediction_file": "<path>/ULHWPWKKLTE921LQLH1P.nii.gz",
+      "reference_file": "<path>/ULHWPWKKLTE921LQLH1P.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9338383654061719,
+          "FN": 16390,
+          "FP": 8990,
+          "IoU": 0.8758881722112737,
+          "TN": 35840307,
+          "TP": 179113,
+          "n_pred": 188103,
+          "n_ref": 195503
+        }
+      },
+      "prediction_file": "<path>/WOUSH4GFU19S1UW1TZL1.nii.gz",
+      "reference_file": "<path>/WOUSH4GFU19S1UW1TZL1.nii.gz"
+    },
+    {
+      "metrics": {
+        "1": {
+          "Dice": 0.9326441075539724,
+          "FN": 10055,
+          "FP": 13204,
+          "IoU": 0.8737892526331211,
+          "TN": 29012001,
+          "TP": 161028,
+          "n_pred": 174232,
+          "n_ref": 171083
+        }
+      },
+      "prediction_file": "<path>/WSJB9P4JCXUVHBOYFVWL.nii.gz",
+      "reference_file": "<path>/WSJB9P4JCXUVHBOYFVWL.nii.gz"
+    }
+  ]
+}

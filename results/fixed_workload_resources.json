@@ -1,0 +1,67 @@
+{
+  "fixed_workload_resources": {
+    "E1": {
+      "allocated_gb": 1.60851712,
+      "seconds_per_100_batches": 5.391850260999793,
+      "slices_per_second": 74.18610754899515,
+      "trainable_parameters": 655329,
+      "skipped_updates": 0,
+      "status": "MEASURED_FIXED_WORKLOAD",
+      "gpu": "NVIDIA GeForce RTX 4090"
+    },
+    "E2": {
+      "allocated_gb": 8.72226048,
+      "seconds_per_100_batches": 14.116626188333006,
+      "slices_per_second": 28.3354225302905,
+      "trainable_parameters": 305023969,
+      "skipped_updates": 1,
+      "status": "MEASURED_WITH_SKIPPED_UPDATES_REQUIRES_REVIEW",
+      "gpu": "NVIDIA GeForce RTX 4090"
+    },
+    "E3": {
+      "allocated_gb": 2.814001664,
+      "seconds_per_100_batches": 6.833844082999955,
+      "slices_per_second": 58.53221573211314,
+      "trainable_parameters": 51048417,
+      "skipped_updates": 0,
+      "status": "MEASURED_FIXED_WORKLOAD",
+      "gpu": "NVIDIA GeForce RTX 4090"
+    },
+    "E4": {
+      "allocated_gb": 15.888311808,
+      "seconds_per_100_batches": 26.405879759333402,
+      "slices_per_second": 15.148146232789694,
+      "trainable_parameters": 2260961,
+      "skipped_updates": 0,
+      "status": "MEASURED_FIXED_WORKLOAD",
+      "gpu": "NVIDIA GeForce RTX 4090"
+    },
+    "E5": {
+      "allocated_gb": 4.996806144,
+      "seconds_per_100_batches": 12.537691951666906,
+      "slices_per_second": 31.90380152632896,
+      "trainable_parameters": 786401,
+      "skipped_updates": 0,
+      "status": "MEASURED_FIXED_WORKLOAD",
+      "gpu": "NVIDIA GeForce RTX 4090"
+    },
+    "E6": {
+      "allocated_gb": 4.854486528,
+      "seconds_per_100_batches": 9.576878609333713,
+      "slices_per_second": 41.76728770135657,
+      "trainable_parameters": 1245153,
+      "skipped_updates": 0,
+      "status": "MEASURED_FIXED_WORKLOAD",
+      "gpu": "NVIDIA GeForce RTX 4090"
+    },
+    "E7": {
+      "allocated_gb": 7.308968448,
+      "seconds_per_100_batches": 15.650582512666915,
+      "slices_per_second": 25.558159470446505,
+      "trainable_parameters": 114132961,
+      "skipped_updates": 0,
+      "status": "MEASURED_FIXED_WORKLOAD",
+      "gpu": "NVIDIA GeForce RTX 4090"
+    }
+  }
+}

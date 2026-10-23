@@ -1,0 +1,50 @@
+{
+  "method": "E7_Giant_Partial_FT_BCEDice",
+  "training_seeds": [
+    42,
+    2026,
+    3407
+  ],
+  "split_seed": 2024,
+  "num_test_cases_per_seed": 31,
+  "num_case_seed_records": 93,
+  "num_test_patients_per_seed": 31,
+  "num_patient_seed_records": 93,
+  "aggregation": "mean and sample SD across the three seed-level case means",
+  "dice_3d": {
+    "mean": 0.8910685972146167,
+    "sd": 0.001470978524259739
+  },
+  "iou_3d": {
+    "mean": 0.8047508636124753,
+    "sd": 0.0023100588163997245
+  },
+  "hd95_header_units": {
+    "mean": 5.971625492624448,
+    "sd": 0.224084314647473
+  },
+  "peak_vram_gb": {
+    "mean": 7.312564736,
+    "sd": 0.00441276662705266
+  },
+  "training_minutes": {
+    "mean": 355.8399868308047,
+    "sd": 80.31363236888079
+  },
+  "total_parameters": 1137267169,
+  "trainable_parameters": 114132961,
+  "physical_batch_size": 4,
+  "gradient_accumulation_steps": 1,
+  "effective_batch_size": 4,
+  "shared_gpu_execution": false,
+  "skipped_optimizer_updates_by_seed": {
+    "42": 40,
+    "2026": 37,
+    "3407": 44
+  },
+  "hd95_warning": "Exploratory header-unit result: local NRRD spacing provenance remains unresolved.",
+  "run_status": "COMPLETE_CASE_LEVEL_WITH_LIMITATIONS",
+  "patient_independence_verified": false,
+  "protocol_extension": "E7 Giant Partial FT: last four of 40 blocks",
+  "limitation": "Case-ID separation does not prove patient independence; report near-duplicate sensitivity."
+}

@@ -1,0 +1,26 @@
+{
+  "git_branch": "e7-delivered-snapshot",
+  "git_commit": "21b33fc963f74597f0827ae1278cc228aaa7cc1f",
+  "git_dirty": false,
+  "python": "3.12.3",
+  "torch": "2.11.0+cu126",
+  "cudnn": 91002,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "deterministic_algorithms": false,
+  "cuda": "12.6",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "dinov2_source_revision": "python-tree-sha256:041ad5d1e3d0d97986db3d8c8db60a8723006ea1250f7c112ddbdc178c634bf6",
+  "pretrained_weights": {
+    "hub_name": "dinov2_vitg14",
+    "path": "<path>/dinov2_vitg14_pretrain.pth",
+    "bytes": 4546108579,
+    "sha256": "baf8467e50af277596bbbafa06887c177ee899ab46033649c383577d7e9309d3"
+  },
+  "split_sha256": {
+    "train": "2f2b6c441f2646e0a06e8ea470bdd96f7864f4f6706f42b71b1eb3bd8ec49316",
+    "val": "56677d26b6f8a16ad3f6239ec7043c5fd0caaca4adae0334447d8f9242ff7456",
+    "test": "2e59b4ca4c0ad393bdb456b6dc2f2fcbab7c7727fb7012806d49e84ef394cae8"
+  },
+  "preprocessing_provenance_sha256": "03e17f0310fd93af98ae5ea79d929a62cfbe65753e4988486fc5cba4f0bf72eb"
+}

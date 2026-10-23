@@ -1,0 +1,59 @@
+{
+  "identity": {
+    "fingerprint": "dd1a656e199d641a88e3cc1f1e90afbf0e23dc3ed27644eca0f0bc193b0a46fb",
+    "cell": "F0",
+    "seed": 3407
+  },
+  "protocol": {
+    "name": "readout_lora_v1_seed3407",
+    "seeds": [
+      3407
+    ],
+    "layers_zero_based": [
+      5,
+      11,
+      17,
+      23
+    ],
+    "batch_size": 4,
+    "accumulation": 1,
+    "workers": 0,
+    "image_size": 448,
+    "max_epochs": 50,
+    "patience": 10,
+    "lr_decoder": 0.001,
+    "lr_adapter": 1e-05,
+    "weight_decay": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "rank": 4,
+    "alpha": 4,
+    "bce_weight": 0.5,
+    "dice_weight": 0.5,
+    "smooth": 1e-06,
+    "amp": "float16",
+    "loss_dtype": "float32",
+    "threshold": 0.5,
+    "augmentation": "none",
+    "scheduler": "none",
+    "feature_cache": false,
+    "bootstrap_count": 20000,
+    "bootstrap_seed": 20260926,
+    "pilot_batches": 100,
+    "max_consecutive_skips": 20,
+    "inference": "native_volume_existing_evaluator",
+    "patient_independence": "unverified"
+  },
+  "cell": [
+    "frozen",
+    "last"
+  ],
+  "seed": 3407,
+  "data_root": "<path>/utah2018_run2",
+  "raw_root": "<path>/utah2018_raw_eval",
+  "dino_repo": "<path>/facebookresearch_dinov2_main",
+  "weights": "<path>/dinov2_vitl14_pretrain.pth"
+}

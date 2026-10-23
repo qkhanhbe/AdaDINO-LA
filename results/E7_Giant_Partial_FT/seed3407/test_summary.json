@@ -1,0 +1,29 @@
+{
+  "method": "E7_Giant_Partial_FT_BCEDice",
+  "seed": 3407,
+  "num_patients": 31,
+  "num_slices": 2728,
+  "threshold": 0.5,
+  "postprocessing": "none",
+  "dice_3d": {
+    "mean": 0.8921209637274958,
+    "std": 0.02918799242882254,
+    "min": 0.8165387934050046,
+    "max": 0.9638971622197374
+  },
+  "iou_3d": {
+    "mean": 0.8064497481318657,
+    "std": 0.047051998345570285,
+    "min": 0.6899582249546781,
+    "max": 0.9303103196636177
+  },
+  "inference_total_seconds": 73.27552091503458,
+  "inference_ms_per_slice": 26.86052819466077,
+  "hd95_header_units": {
+    "mean": 5.959785118814591,
+    "std": 2.5193117340001505,
+    "min": 2.0,
+    "max": 15.893374880020419
+  },
+  "hd95_warning": "Local NRRD headers report 1 mm spacing; treat HD95 as exploratory header-unit output until spatial provenance is verified."
+}

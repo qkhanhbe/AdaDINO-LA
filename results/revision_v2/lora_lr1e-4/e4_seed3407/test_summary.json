@@ -1,0 +1,29 @@
+{
+  "method": "E4_Giant_LoRA",
+  "seed": 3407,
+  "num_patients": 31,
+  "num_slices": 2728,
+  "threshold": 0.5,
+  "postprocessing": "none",
+  "dice_3d": {
+    "mean": 0.9045779334701511,
+    "std": 0.025273381982948328,
+    "min": 0.8518919877719914,
+    "max": 0.9397659726760651
+  },
+  "iou_3d": {
+    "mean": 0.8267076697074361,
+    "std": 0.04154529385820797,
+    "min": 0.7419963789981895,
+    "max": 0.8863759778094134
+  },
+  "inference_total_seconds": 79.57884869491681,
+  "inference_ms_per_slice": 29.171132219544287,
+  "hd95_header_units": {
+    "mean": 7.293189752398261,
+    "std": 5.414448143346843,
+    "min": 3.0,
+    "max": 23.021728866442675
+  },
+  "hd95_warning": "Local NRRD headers report 1 mm spacing; treat HD95 as exploratory header-unit output until spatial provenance is verified."
+}

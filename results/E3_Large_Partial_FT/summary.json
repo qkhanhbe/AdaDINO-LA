@@ -1,0 +1,47 @@
+{
+  "method": "E3_Large_Partial_FT_BCEDice",
+  "training_seeds": [
+    42,
+    2026,
+    3407
+  ],
+  "split_seed": 2024,
+  "num_test_cases_per_seed": 31,
+  "num_case_seed_records": 93,
+  "num_test_patients_per_seed": 31,
+  "num_patient_seed_records": 93,
+  "aggregation": "mean and sample SD across the three seed-level case means",
+  "dice_3d": {
+    "mean": 0.8851189620299188,
+    "sd": 0.0020914493124177466
+  },
+  "iou_3d": {
+    "mean": 0.7952861984980663,
+    "sd": 0.0031215461010880526
+  },
+  "hd95_header_units": {
+    "mean": 7.004259834019707,
+    "sd": 0.3874133026353273
+  },
+  "peak_vram_gb": {
+    "mean": 2.814280192,
+    "sd": 0.0011351168172485208
+  },
+  "training_minutes": {
+    "mean": 138.95648176731666,
+    "sd": 45.36546191009311
+  },
+  "total_parameters": 305023969,
+  "trainable_parameters": 51048417,
+  "physical_batch_size": 4,
+  "gradient_accumulation_steps": 1,
+  "effective_batch_size": 4,
+  "shared_gpu_execution": false,
+  "skipped_optimizer_updates_by_seed": {
+    "42": 25,
+    "2026": 30,
+    "3407": 18
+  },
+  "hd95_warning": "Exploratory header-unit result: local NRRD spacing provenance remains unresolved.",
+  "run_status": "VALID"
+}
