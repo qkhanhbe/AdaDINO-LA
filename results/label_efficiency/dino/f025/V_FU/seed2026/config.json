@@ -1,0 +1,374 @@
+{
+  "identity": {
+    "fingerprint": "ddaed2c9567ebaae7722bb6483061ba4555e1c78a77c05875c70ee44591fc5a5",
+    "cell": "V_FU",
+    "seed": 2026,
+    "fraction": 25
+  },
+  "protocol": {
+    "name": "label_efficiency_v2",
+    "status": "pre-specified 2026-10-27 before any reduced-data run",
+    "backbone": "dinov2_vitl14",
+    "cells": {
+      "V_FR": "frozen",
+      "V_PA": "partial",
+      "V_LO": "lora",
+      "V_FU": "full",
+      "V_SC": "scratch"
+    },
+    "seeds": [
+      42,
+      2026,
+      3407
+    ],
+    "readout": "quarter_concat",
+    "layers_zero_based": [
+      5,
+      11,
+      17,
+      23
+    ],
+    "batch_size": 4,
+    "accumulation": 1,
+    "workers": 0,
+    "image_size": 448,
+    "max_epochs": 50,
+    "patience": 10,
+    "lr_rule": {
+      "pretrained_weights": 1e-05,
+      "lora_adapters": 0.0001,
+      "decoder": 0.001
+    },
+    "grad_clip_norm": 1.0,
+    "weight_decay": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "partial_blocks": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "rank": 4,
+    "alpha": 4,
+    "bce_weight": 0.5,
+    "dice_weight": 0.5,
+    "smooth": 1e-06,
+    "amp": "float16",
+    "loss_dtype": "float32",
+    "threshold": 0.5,
+    "augmentation": "none",
+    "scheduler": "none",
+    "bootstrap_count": 20000,
+    "bootstrap_seed": 20260926,
+    "pilot_batches": 100,
+    "max_consecutive_skips": 20,
+    "inference": "native_volume_existing_evaluator",
+    "patient_independence": "unverified",
+    "fractions_percent_to_volumes": {
+      "10": 11,
+      "25": 27,
+      "50": 54,
+      "100": 108
+    },
+    "subset_rule": "per seed, one permutation of the sorted 108 training volumes (numpy PCG64, seed [20261027, training seed]); each fraction takes a prefix, so subsets are nested",
+    "steps_per_epoch": 2376,
+    "epoch_rule": "cycle through the subset (new shuffle per sweep) until 2376 batches; validation, checkpoint selection and patience as in v2",
+    "scratch": {
+      "init": "DINOv2 ViT-L/14 hub architecture with its own random initialization",
+      "adaptation": "full",
+      "encoder_lr": 0.0001
+    },
+    "validation": "fixed 15 volumes",
+    "test": "fixed 31 volumes, evaluated once per completed run",
+    "runs": [
+      [
+        10,
+        "V_FR",
+        42
+      ],
+      [
+        10,
+        "V_FR",
+        2026
+      ],
+      [
+        10,
+        "V_FR",
+        3407
+      ],
+      [
+        10,
+        "V_PA",
+        42
+      ],
+      [
+        10,
+        "V_PA",
+        2026
+      ],
+      [
+        10,
+        "V_PA",
+        3407
+      ],
+      [
+        10,
+        "V_LO",
+        42
+      ],
+      [
+        10,
+        "V_LO",
+        2026
+      ],
+      [
+        10,
+        "V_LO",
+        3407
+      ],
+      [
+        10,
+        "V_FU",
+        42
+      ],
+      [
+        10,
+        "V_FU",
+        2026
+      ],
+      [
+        10,
+        "V_FU",
+        3407
+      ],
+      [
+        10,
+        "V_SC",
+        42
+      ],
+      [
+        10,
+        "V_SC",
+        2026
+      ],
+      [
+        10,
+        "V_SC",
+        3407
+      ],
+      [
+        25,
+        "V_FR",
+        42
+      ],
+      [
+        25,
+        "V_FR",
+        2026
+      ],
+      [
+        25,
+        "V_FR",
+        3407
+      ],
+      [
+        25,
+        "V_PA",
+        42
+      ],
+      [
+        25,
+        "V_PA",
+        2026
+      ],
+      [
+        25,
+        "V_PA",
+        3407
+      ],
+      [
+        25,
+        "V_LO",
+        42
+      ],
+      [
+        25,
+        "V_LO",
+        2026
+      ],
+      [
+        25,
+        "V_LO",
+        3407
+      ],
+      [
+        25,
+        "V_FU",
+        42
+      ],
+      [
+        25,
+        "V_FU",
+        2026
+      ],
+      [
+        25,
+        "V_FU",
+        3407
+      ],
+      [
+        25,
+        "V_SC",
+        42
+      ],
+      [
+        25,
+        "V_SC",
+        2026
+      ],
+      [
+        25,
+        "V_SC",
+        3407
+      ],
+      [
+        50,
+        "V_FR",
+        42
+      ],
+      [
+        50,
+        "V_FR",
+        2026
+      ],
+      [
+        50,
+        "V_FR",
+        3407
+      ],
+      [
+        50,
+        "V_PA",
+        42
+      ],
+      [
+        50,
+        "V_PA",
+        2026
+      ],
+      [
+        50,
+        "V_PA",
+        3407
+      ],
+      [
+        50,
+        "V_LO",
+        42
+      ],
+      [
+        50,
+        "V_LO",
+        2026
+      ],
+      [
+        50,
+        "V_LO",
+        3407
+      ],
+      [
+        50,
+        "V_FU",
+        42
+      ],
+      [
+        50,
+        "V_FU",
+        2026
+      ],
+      [
+        50,
+        "V_FU",
+        3407
+      ],
+      [
+        50,
+        "V_SC",
+        42
+      ],
+      [
+        50,
+        "V_SC",
+        2026
+      ],
+      [
+        50,
+        "V_SC",
+        3407
+      ],
+      [
+        100,
+        "V_SC",
+        42
+      ],
+      [
+        100,
+        "V_SC",
+        2026
+      ],
+      [
+        100,
+        "V_SC",
+        3407
+      ],
+      [
+        100,
+        "V_LO",
+        42
+      ]
+    ]
+  },
+  "cell": "full",
+  "seed": 2026,
+  "fraction_percent": 25,
+  "train_volumes": 27,
+  "train_cases": [
+    "06SR5RBREL16DQ6M8LWS",
+    "3C2QTUNI0852XV7ZH4Q1",
+    "4CHFJGF6ZUM7CMZTNFQF",
+    "8E00BQQJ7T5TQSSGZVGE",
+    "8NPX269KV6D4KOELNP9K",
+    "9DQYTIU00I4JC0OEOKQQ",
+    "BP5NOS0LX7U5IXFES424",
+    "FGM5NIWN3URY4HF4WNUW",
+    "GSC9KNY0VEZXFSGWNF25",
+    "HVE7DR3CUA2IM3RC6OMA",
+    "JG24TOFCDWAFMJ5O807R",
+    "KM5RYAMP4P4ZP6XWP3Q2",
+    "MKVZDR7UDH5HES9U96GW",
+    "NDHTGYOM4FD148VWEWNZ",
+    "QZC1W0FNR19KJFLOCFLH",
+    "R8ER97O9UUN77C02VE2J",
+    "SN4LF8SGBSRQUPTDSX78",
+    "UOTC6ZI12583GTMLHKAL",
+    "UZUZZT2W9IUSHL6ASOX3",
+    "V0MZOWJ6MU3RMRCV9EXR",
+    "VQ2L3WM8KEVF6L44E6G9",
+    "Y17SIT4UVACAM0WNBAWD",
+    "Y7ZU0B2APPF54WG6PDMF",
+    "YDKD1HVHSME6NVMA8I39",
+    "Z4WM2IZVVFPI4NNY9UKZ",
+    "Z9GMG63CJLL0VW893BB1",
+    "ZQPMJ4XEC5A4BISD45P1"
+  ],
+  "backbone_init": "dinov2_pretrained",
+  "encoder_lr": 1e-05,
+  "data_root": "<path>/utah2018_run2",
+  "raw_root": "<path>/utah2018_raw_eval",
+  "dino_repo": "<path>/facebookresearch_dinov2_main",
+  "weights": "<path>/dinov2_vitl14_pretrain.pth"
+}

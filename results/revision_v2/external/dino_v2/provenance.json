@@ -1,0 +1,80 @@
+{
+  "status": "inference only; post hoc common improved protocol; external protocol unchanged",
+  "pretrained_sha256": "d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428",
+  "threshold": 0.5,
+  "amp": "float16",
+  "checkpoints": {
+    "V_FR_seed42": {
+      "best_sha256": "12d1584b2eb2135ff17e2f7656450287fdcc8d2d5f3d8eeab69570944f531582",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_FR_seed2026": {
+      "best_sha256": "f8122e404069c4ce66aff53d6f3dff8e5ae13e3b2109adf7af4675bedf9ca7e1",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_FR_seed3407": {
+      "best_sha256": "c19c3c742a3050d3e20ca7706c3b95361cf7084825dace139ec83c219585a219",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_LO_seed42": {
+      "best_sha256": "f45940003959fe060fc34b3341372d8641b88eaa0c290d3c76ab2537303ba570",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_LO_seed2026": {
+      "best_sha256": "2ea3b2bd3b5a9edb59ac87375a51d5a31ecd324d02b067e84fb3c9c375d641e7",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_LO_seed3407": {
+      "best_sha256": "359511c4a91f3c3249d2447847b140da0ffa41469d89ee6ca7a86745b30006d7",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_PA_seed42": {
+      "best_sha256": "1e16980bc2f380c8cef63e2e40446d79fa95e6b4deebb379c9075c854fb1c50e",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_PA_seed2026": {
+      "best_sha256": "36621c6f9818c86b6d82c3d182ce9b4a5ff2e966b8b32573724ecda2b234e293",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_PA_seed3407": {
+      "best_sha256": "89becb2d865ab832fe65a8857940966d4ef5176379f9f1822fc0190114a1157d",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_FU_seed42": {
+      "best_sha256": "35dc23ca49b5cc3f1f6c4376d61b4f0042abbfe26b85c538c3c84456e677cdb4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_FU_seed2026": {
+      "best_sha256": "8910239c0843c8863b2208ed98fb279c444cd8663be89aed7d09123fd0a1c53a",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    },
+    "V_FU_seed3407": {
+      "best_sha256": "2317ab6bc3b60678b0f51abc9aab3629da014941c3774e6c086ae5894afb5418",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "torch": "2.11.0+cu126",
+      "python": "3.12.3"
+    }
+  }
+}

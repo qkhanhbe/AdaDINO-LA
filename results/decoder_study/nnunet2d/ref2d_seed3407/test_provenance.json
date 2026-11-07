@@ -1,0 +1,12 @@
+{
+  "status": "TEST_COMPLETE_NATIVE_CASE_EVALUATION",
+  "seed": 3407,
+  "configuration": "2d",
+  "fold": 0,
+  "num_cases": 31,
+  "checkpoint_sha256": "5b318b3da2b1d5bd9a91299e4e587e934f8b5fb024cb6331bc30029bf0487af7",
+  "selection": "official EMA validation-patch foreground Dice; not native-volume Dice",
+  "test_time_mirroring": true,
+  "postprocessing": "none",
+  "wrapper_sha256": "33203cd9d6264e069a571b8b5f8a69e19e38623a31a70534f7ac0c8f970364c9"
+}

@@ -1,4 +1,22 @@
 run,test_cases,mean_dice_3d,gpu,torch
+decoder_study/dino/f010/D_FU/seed2026,31,0.851898,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f010/D_FU/seed3407,31,0.862568,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f010/D_FU/seed42,31,0.846145,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f010/D_LO/seed2026,31,0.880387,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f010/D_LO/seed3407,31,0.891135,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f010/D_LO/seed42,31,0.857604,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_FR/seed2026,31,0.907531,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_FR/seed3407,31,0.909932,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_FR/seed42,31,0.907149,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_FU/seed2026,31,0.912891,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_FU/seed3407,31,0.915304,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_FU/seed42,31,0.916279,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_LO/seed2026,31,0.910029,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_LO/seed3407,31,0.913550,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_LO/seed42,31,0.913701,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_PA/seed2026,31,0.910841,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_PA/seed3407,31,0.905396,NVIDIA GeForce RTX 5090,2.11.0+cu128
+decoder_study/dino/f100/D_PA/seed42,31,0.911478,NVIDIA GeForce RTX 5090,2.11.0+cu128
 E2_Large_Full_FT/seed2026,31,0.911023,NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb,2.8.0+cu128
 E2_Large_Full_FT/seed3407,31,0.903594,NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb,2.8.0+cu128
 E2_Large_Full_FT/seed42,31,0.905192,NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb,2.8.0+cu128
@@ -11,6 +29,40 @@ E4_Giant_LoRA/seed42,31,0.903190,NVIDIA RTX 4000 Ada Generation,2.11.0+cu128
 E7_Giant_Partial_FT/seed2026,31,0.889388,NVIDIA GeForce RTX 4090,2.11.0+cu126
 E7_Giant_Partial_FT/seed3407,31,0.892121,NVIDIA GeForce RTX 4090,2.11.0+cu126
 E7_Giant_Partial_FT/seed42,31,0.891697,NVIDIA GeForce RTX 4090,2.11.0+cu126
+label_efficiency/dino/f010/V_FR/seed2026,31,0.862127,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_FR/seed3407,31,0.869308,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_FR/seed42,31,0.851776,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_FU/seed2026,31,0.881594,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_FU/seed3407,31,0.886294,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_FU/seed42,31,0.875116,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_LO/seed2026,31,0.878915,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_LO/seed3407,31,0.889959,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_LO/seed42,31,0.880631,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_PA/seed2026,31,0.871029,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_PA/seed3407,31,0.879367,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_PA/seed42,31,0.866696,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_SC/seed2026,31,0.477773,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_SC/seed3407,31,0.489369,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f010/V_SC/seed42,31,0.417430,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_FR/seed2026,31,0.882886,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_FR/seed3407,31,0.882461,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_FR/seed42,31,0.885698,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_FU/seed2026,31,0.893066,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_FU/seed3407,31,0.895503,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_FU/seed42,31,0.894892,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_LO/seed2026,31,0.897786,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_LO/seed3407,31,0.897141,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_LO/seed42,31,0.899518,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_PA/seed2026,31,0.885056,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_PA/seed3407,31,0.886337,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_PA/seed42,31,0.886183,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_SC/seed2026,31,0.605317,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_SC/seed3407,31,0.603482,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f025/V_SC/seed42,31,0.669113,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f100/V_LO/seed42,31,0.911776,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f100/V_SC/seed2026,31,0.760253,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f100/V_SC/seed3407,31,0.755411,NVIDIA GeForce RTX 5090,2.11.0+cu128
+label_efficiency/dino/f100/V_SC/seed42,31,0.769161,NVIDIA GeForce RTX 5090,2.11.0+cu128
 revision_v2/fp32_loss/e0_seed2026,31,0.880733,NVIDIA GeForce RTX 4090,2.11.0+cu126
 revision_v2/fp32_loss/e0_seed3407,31,0.882864,NVIDIA GeForce RTX 4090,2.11.0+cu126
 revision_v2/fp32_loss/e0_seed42,31,0.879275,NVIDIA GeForce RTX 4090,2.11.0+cu126
@@ -68,3 +120,12 @@ revision_v2/readout/L1/seed42,31,0.904421,NVIDIA GeForce RTX 4090,2.11.0+cu126
 nnUNet_ResEncM_3D/seed2026,31,0.930367,,
 nnUNet_ResEncM_3D/seed3407,31,0.930445,,
 nnUNet_ResEncM_3D/seed42,31,0.930639,,
+label_efficiency/nnunet/le_f010_seed2026,31,0.920054,,
+label_efficiency/nnunet/le_f010_seed3407,31,0.919607,,
+label_efficiency/nnunet/le_f010_seed42,31,0.921241,,
+label_efficiency/nnunet/le_f025_seed2026,31,0.925402,,
+label_efficiency/nnunet/le_f025_seed3407,31,0.922699,,
+label_efficiency/nnunet/le_f025_seed42,31,0.925757,,
+decoder_study/nnunet2d/ref2d_seed2026,31,0.923061,,
+decoder_study/nnunet2d/ref2d_seed3407,31,0.922929,,
+decoder_study/nnunet2d/ref2d_seed42,31,0.923805,,

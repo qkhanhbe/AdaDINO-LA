@@ -1,0 +1,12 @@
+{
+  "status": "TEST_COMPLETE_NATIVE_CASE_EVALUATION",
+  "seed": 2026,
+  "fraction_percent": 10,
+  "fold": 2,
+  "num_cases": 31,
+  "checkpoint_sha256": "a77df01928fee20cb70b21b8b7691cc8b0aa73c7c89729ef9a54360e6bfdbcf7",
+  "selection": "official EMA validation-patch foreground Dice; not native-volume Dice",
+  "test_time_mirroring": true,
+  "postprocessing": "none",
+  "wrapper_sha256": "b7733fbbdffceca65d183b329bc6890a126919b65faab788e5d8d25a99c1b743"
+}

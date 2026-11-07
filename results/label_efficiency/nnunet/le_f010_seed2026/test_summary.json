@@ -1,0 +1,37 @@
+{
+  "method": "nnUNet_ResEncM_3d_fullres",
+  "seed": 2026,
+  "split": "test",
+  "num_cases": 31,
+  "aggregation": "equal weight per native 3D case",
+  "patient_independence_verified": false,
+  "physical_spacing_verified": false,
+  "std_scope": "cases within one fitted model; not retraining variability",
+  "postprocessing": "none in this evaluator",
+  "prediction_rule": "binary labels supplied by nnU-Net; no evaluator threshold selection",
+  "metric_source_sha256": "538a21f906d63c1bb4b078c4e882c6cb60413c82f3f8106384c8cdd28bab8639",
+  "conversion_provenance_sha256": "97c41e20500a3a0ac62bda76d507424b23cb3758ab0eefd55b645d9550f81049",
+  "source_split_sha256": {
+    "train": "2f2b6c441f2646e0a06e8ea470bdd96f7864f4f6706f42b71b1eb3bd8ec49316",
+    "val": "56677d26b6f8a16ad3f6239ec7043c5fd0caaca4adae0334447d8f9242ff7456",
+    "test": "2e59b4ca4c0ad393bdb456b6dc2f2fcbab7c7727fb7012806d49e84ef394cae8"
+  },
+  "dice_3d": {
+    "mean": 0.9200539362809249,
+    "std_across_cases": 0.02727624672749589,
+    "min": 0.8268455159287624,
+    "max": 0.9532049866500713
+  },
+  "iou_3d": {
+    "mean": 0.8530441495008264,
+    "std_across_cases": 0.04502662892864452,
+    "min": 0.7048053152039555,
+    "max": 0.910593740411169
+  },
+  "hd95_header_units": {
+    "mean": 5.553033865451563,
+    "std_across_cases": 3.414077787274883,
+    "min": 2.23606797749979,
+    "max": 17.329161124851257
+  }
+}

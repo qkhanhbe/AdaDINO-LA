@@ -1,0 +1,231 @@
+{
+  "identity": {
+    "fingerprint": "d6429d54f54de5b1c159f6310d352df7728703f8111c6ba62ad547d99c8d2286",
+    "cell": "D_FU",
+    "seed": 3407,
+    "fraction": 10
+  },
+  "protocol": {
+    "name": "decoder_study_v2",
+    "status": "pre-specified 2026-11-01 before any decoder-study run; post hoc with respect to the main and v2 results",
+    "backbone": "dinov2_vitl14",
+    "cells": {
+      "D_FR": "frozen",
+      "D_PA": "partial",
+      "D_LO": "lora",
+      "D_FU": "full"
+    },
+    "seeds": [
+      42,
+      2026,
+      3407
+    ],
+    "readout": "quarter_concat",
+    "layers_zero_based": [
+      5,
+      11,
+      17,
+      23
+    ],
+    "batch_size": 4,
+    "accumulation": 1,
+    "workers": 0,
+    "image_size": 448,
+    "max_epochs": 50,
+    "patience": 10,
+    "lr_rule": {
+      "pretrained_weights": 1e-05,
+      "lora_adapters": 0.0001,
+      "decoder": 0.001
+    },
+    "grad_clip_norm": 1.0,
+    "weight_decay": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "partial_blocks": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "rank": 4,
+    "alpha": 4,
+    "bce_weight": 0.5,
+    "dice_weight": 0.5,
+    "smooth": 1e-06,
+    "amp": "float16",
+    "loss_dtype": "float32",
+    "threshold": 0.5,
+    "augmentation": "none",
+    "scheduler": "none",
+    "bootstrap_count": 20000,
+    "bootstrap_seed": 20260926,
+    "pilot_batches": 100,
+    "max_consecutive_skips": 20,
+    "inference": "native_volume_existing_evaluator",
+    "patient_independence": "unverified",
+    "fractions_percent_to_volumes": {
+      "10": 11,
+      "25": 27,
+      "50": 54,
+      "100": 108
+    },
+    "subset_rule": "per seed, one permutation of the sorted 108 training volumes (numpy PCG64, seed [20261027, training seed]); each fraction takes a prefix, so subsets are nested",
+    "steps_per_epoch": 2376,
+    "epoch_rule": "cycle through the subset (new shuffle per sweep) until 2376 batches; validation, checkpoint selection and patience as in v2",
+    "validation": "fixed 15 volumes",
+    "test": "fixed 31 volumes, evaluated once per completed run",
+    "runs": [
+      [
+        100,
+        "D_FR",
+        42
+      ],
+      [
+        100,
+        "D_PA",
+        42
+      ],
+      [
+        100,
+        "D_LO",
+        42
+      ],
+      [
+        100,
+        "D_FU",
+        42
+      ],
+      [
+        100,
+        "D_FR",
+        2026
+      ],
+      [
+        100,
+        "D_PA",
+        2026
+      ],
+      [
+        100,
+        "D_LO",
+        2026
+      ],
+      [
+        100,
+        "D_FU",
+        2026
+      ],
+      [
+        100,
+        "D_FR",
+        3407
+      ],
+      [
+        100,
+        "D_PA",
+        3407
+      ],
+      [
+        100,
+        "D_LO",
+        3407
+      ],
+      [
+        100,
+        "D_FU",
+        3407
+      ],
+      [
+        10,
+        "D_LO",
+        42
+      ],
+      [
+        10,
+        "D_FU",
+        42
+      ],
+      [
+        10,
+        "D_LO",
+        2026
+      ],
+      [
+        10,
+        "D_FU",
+        2026
+      ],
+      [
+        10,
+        "D_LO",
+        3407
+      ],
+      [
+        10,
+        "D_FU",
+        3407
+      ]
+    ],
+    "light_counterpart": {
+      "D_FR": "V_FR",
+      "D_PA": "V_PA",
+      "D_LO": "V_LO",
+      "D_FU": "V_FU"
+    },
+    "decoder": {
+      "type": "UNETR-style hierarchical decoder (2D)",
+      "readout_layers_zero_based": [
+        5,
+        11,
+        17,
+        23
+      ],
+      "skip_resolutions": {
+        "layer23": 32,
+        "layer17": 64,
+        "layer11": 128,
+        "layer5": 224,
+        "image_stem": 448
+      },
+      "upsampling": "bilinear resize + 3x3 conv + BN + ReLU",
+      "fusion": "concatenate + two 3x3 conv blocks",
+      "parameters": 3121057
+    },
+    "fractions_run": [
+      10,
+      100
+    ],
+    "contrasts": [
+      "hierarchical - lightweight per strategy and fraction",
+      "hierarchical - nnU-Net 3d_fullres",
+      "strategy ranking at 100%"
+    ]
+  },
+  "cell": "full",
+  "seed": 3407,
+  "fraction_percent": 10,
+  "train_volumes": 11,
+  "train_cases": [
+    "6799D6LEBH3NSRV1KH27",
+    "9DCM2IB45SK6YKQNYUQY",
+    "9DHWWP5Y66VDMPXISZ13",
+    "BP5NOS0LX7U5IXFES424",
+    "DD3MZ7M8J7MVQ38NZWBZ",
+    "GSC9KNY0VEZXFSGWNF25",
+    "JG24TOFCDWAFMJ5O807R",
+    "MS11OZHE0BROK9VKMOEV",
+    "S9HMB3CY6737UDPG6TN2",
+    "UTBUJIWZMKP64E3N73YC",
+    "ZQR579BFRMYBFFBX3Q5M"
+  ],
+  "decoder": "UNETR-style hierarchical decoder (2D)",
+  "encoder_lr": 1e-05,
+  "data_root": "<path>/utah2018_run2",
+  "raw_root": "<path>/utah2018_raw_eval",
+  "dino_repo": "<path>/facebookresearch_dinov2_main",
+  "weights": "<path>/dinov2_vitl14_pretrain.pth"
+}

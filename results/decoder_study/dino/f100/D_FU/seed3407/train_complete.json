@@ -1,0 +1,14 @@
+{
+  "identity": {
+    "fingerprint": "d6429d54f54de5b1c159f6310d352df7728703f8111c6ba62ad547d99c8d2286",
+    "cell": "D_FU",
+    "seed": 3407,
+    "fraction": 100
+  },
+  "epochs": 18,
+  "best_epoch": 8,
+  "best_validation_dice": 0.9066869173642769,
+  "best_sha256": "58ec7b5c00fdf7e55fe9f4738d1931c1af68c042a5c158619430c91400459c5b",
+  "test_evaluated": false,
+  "timing_note": "Shared GPU; wall-clock timing is not used for reported results"
+}

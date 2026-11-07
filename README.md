@@ -1,6 +1,6 @@
 # AdaDINO-LA: A Controlled Study of DINOv2 Adaptation Strategies for Left Atrial Segmentation in LGE-MRI
 
-![Paper](https://img.shields.io/badge/Paper-under%20review-lightgrey)
+![Paper](https://img.shields.io/badge/Paper-in%20preparation-lightgrey)
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.11-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -38,7 +38,10 @@ fine-tuning of DINOv2 ViT-Large and ViT-Giant share one case-level split (108/15
 preprocessing pipeline, decoder topology, loss implementation and checkpoint rule. Every
 configuration is trained with three seeds and evaluated on reconstructed native-resolution 3D
 volumes, with a no-pretraining control, recipe-sensitivity analyses, external evaluation and a
-task-specific nnU-Net ResEnc-M 3D reference on the same cases.
+task-specific nnU-Net ResEnc-M 3D reference on the same cases. Two follow-up studies, each
+specified before its first run, repeat the common improved recipe with 11 and 27 training volumes
+(label budget) and with a UNETR-style hierarchical decoder (decoder study, with an nnU-Net 2D
+reference).
 
 ### Key Findings
 
@@ -48,7 +51,9 @@ task-specific nnU-Net ResEnc-M 3D reference on the same cases.
 | Which adaptation strategy? (main protocol) | Frozen 0.875, Partial FT 0.885, LoRA 0.899, Full FT 0.907 |
 | Under one improved recipe for all strategies | Frozen 0.903, Partial FT 0.908, LoRA 0.912, Full FT 0.912 (LoRA matches Full FT at about 56% of the training memory) |
 | Does a larger backbone help? | ViT-Giant adds at most 0.6 points at 2.6 to 3.3 times the training memory |
-| Task-specific reference | nnU-Net 0.930 internally; inconclusive on external LGE data; higher on bSSFP data |
+| Fewer labels? (11 / 27 / 108 training volumes, common recipe) | LoRA 0.883 / 0.898 / 0.912, Full FT 0.881 / 0.894 / 0.912, random initialization 0.462 / 0.626 / 0.762 |
+| Does a stronger decoder help? (hierarchical decoder with skips) | 0.1 to 0.5 points at 108 volumes (best: Full FT 0.915); lower at 11 volumes (LoRA 0.876, Full FT 0.854) |
+| Task-specific reference | nnU-Net 3D 0.930 (0.920 with 11 volumes; nnU-Net 2D 0.923) internally; inconclusive on external LGE data; higher on bSSFP data |
 
 ---
 
@@ -175,12 +180,42 @@ Cells of the common improved protocol: `V_FR` (Frozen), `V_PA` (Partial FT), `V_
 learning-rate rule (pretrained weights 1e-5, LoRA adapters 1e-4, decoder 1e-3). The readout study
 is run the same way with `python -m src.train_readout_study`.
 
+External test of the common-improved-protocol checkpoints (inference only; CDEMRIS zips in
+`data/external/cdemris_raw/`, MSD Task02 in `data/imagesTr` and `data/labelsTr`):
+
+```bash
+python scripts/external_eval_protocol_v2.py prepare --work runs/external_v2
+python scripts/external_eval_protocol_v2.py infer --work runs/external_v2 --runs runs/protocol_v2/runs \
+  --dino-repo <torch_hub>/facebookresearch_dinov2_main \
+  --weights <torch_hub>/checkpoints/dinov2_vitl14_pretrain.pth
+```
+
+Label-budget study (common improved recipe on nested subsets of 11 and 27 training volumes, plus
+the `V_SC` random-initialization cell) and decoder study (`D_FR`, `D_PA`, `D_LO`, `D_FU`: the same
+recipe with the hierarchical decoder, at 108 and 11 volumes). The subsets are fixed in
+`configs/label_efficiency_subsets.json`; the runners check its digest. The 50% budget was
+specified but not run (`configs/label_efficiency_deviations.json`).
+
+```bash
+python -m src.train_label_efficiency --mode train --cell V_LO --fraction 10 --seed 42 $COMMON \
+  --subsets configs/label_efficiency_subsets.json --output-root runs/label_efficiency --resume
+python -m src.train_decoder_study    --mode train --cell D_FU --fraction 100 --seed 42 $COMMON \
+  --subsets configs/label_efficiency_subsets.json --output-root runs/decoder_study --resume
+# then --mode evaluate with the same arguments (test is evaluated once per completed run)
+```
+
 ### nnU-Net Reference
 
 ```bash
 python scripts/prepare_nnunet_baseline.py      # lossless NRRD-to-NIfTI conversion with the same split
 python scripts/run_nnunet_baseline.py          # nnU-Net ResEnc-M 3D full resolution, three seeds
 python scripts/evaluate_nnunet_native.py       # same native-volume evaluator as the DINOv2 runs
+
+# Label budget (3d_fullres, same plans and recipe, reduced training cases) and 2d reference
+python scripts/run_nnunet_label_efficiency.py --mode train --root <nnunet_data> \
+  --subsets configs/label_efficiency_subsets.json --fraction 10 --seed 42
+python scripts/run_nnunet_2d_reference.py --mode train --root <nnunet_data> \
+  --results-root runs/nnunet2d --subsets configs/label_efficiency_subsets.json --seed 42
 ```
 
 ### Reproducing the Tables
@@ -189,12 +224,17 @@ No GPU or image data are needed:
 
 ```bash
 python scripts/reproduce_revision_v2.py --paper-dir outputs [--figures]
+python scripts/reproduce_label_efficiency.py --paper-dir outputs
+python scripts/reproduce_decoder_study.py --paper-dir outputs
+python scripts/reproduce_external_sensitivity.py
 ```
 
 This regenerates every results table of the manuscript (accuracy, paired effects with Holm
 adjustment, recipe sensitivity, common improved protocol, external evaluation, efficiency with
-estimated RTX 4090 GPU-hours, per-seed and exclusion sensitivity, training lengths and the
-supplementary audit tables) in `outputs/`; each table is byte-identical to the manuscript version.
+estimated RTX 4090 GPU-hours, per-seed and exclusion sensitivity, training lengths, label budget,
+decoder study and the supplementary audit tables) in `outputs/`; each table is byte-identical to
+the current manuscript version. The last command writes the external sensitivity analysis
+(without the volume on which nnU-Net fails) to `outputs/external_sensitivity.json`.
 
 ---
 
@@ -213,6 +253,33 @@ supplementary audit tables) in `outputs/`; each table is byte-identical to the m
 | ViT-Giant | LoRA | 0.9027 ± 0.0005 | – |
 | ViT-Large | Full FT, random initialization | 0.7639 ± 0.0234 | – |
 | nnU-Net ResEnc-M 3D | (reference) | 0.9305 ± 0.0001 | – |
+| nnU-Net ResEnc-M 2D | (reference) | 0.9233 ± 0.0005 | – |
+
+### Label budget (common improved recipe, 31 test volumes, mean ± SD over three seeds)
+
+| Model | 11 volumes | 27 volumes | 108 volumes |
+|-------|------------|------------|-------------|
+| ViT-Large Frozen | 0.8611 ± 0.0088 | 0.8837 ± 0.0018 | 0.9032 ± 0.0008 |
+| ViT-Large Partial FT | 0.8724 ± 0.0064 | 0.8859 ± 0.0007 | 0.9079 ± 0.0010 |
+| ViT-Large LoRA | 0.8832 ± 0.0059 | 0.8981 ± 0.0012 | 0.9115 ± 0.0007 |
+| ViT-Large Full FT | 0.8810 ± 0.0056 | 0.8945 ± 0.0013 | 0.9115 ± 0.0011 |
+| ViT-Large Full FT, random initialization | 0.4615 ± 0.0386 | 0.6260 ± 0.0374 | 0.7616 ± 0.0070 |
+| nnU-Net ResEnc-M 3D | 0.9203 ± 0.0008 | 0.9246 ± 0.0017 | 0.9305 ± 0.0001 |
+
+The 108-volume DINOv2 rows are the common-improved-protocol runs; the random-initialization row
+uses the same recipe at every budget.
+
+### Decoder study (common improved recipe, 31 test volumes, mean ± SD over three seeds)
+
+| Strategy | Light decoder, 108 | Hierarchical decoder, 108 | Light decoder, 11 | Hierarchical decoder, 11 |
+|----------|--------------------|---------------------------|-------------------|--------------------------|
+| Frozen | 0.9032 ± 0.0008 | 0.9082 ± 0.0015 | – | – |
+| Partial FT | 0.9079 ± 0.0010 | 0.9092 ± 0.0033 | – | – |
+| LoRA | 0.9115 ± 0.0007 | 0.9124 ± 0.0021 | 0.8832 ± 0.0059 | 0.8764 ± 0.0171 |
+| Full FT | 0.9115 ± 0.0011 | 0.9148 ± 0.0017 | 0.8810 ± 0.0056 | 0.8535 ± 0.0083 |
+
+The hierarchical decoder (3.1 M parameters versus 0.66 M) reads blocks 5, 11, 17 and 23 with
+skip connections and an image-stem skip.
 
 ### Qualitative comparison
 
@@ -231,6 +298,8 @@ supplementary audit tables) in `outputs/`; each table is byte-identical to the m
 
 ```
 splits/        fixed case-level split (108 train / 15 val / 31 test case IDs)
+configs/       pre-specified label-budget subsets and the recorded deviation (50% budget not run)
+paper/         current manuscript draft and supplementary material (not peer reviewed)
 src/           data preparation, model, training loops, metrics and native-volume evaluation
 scripts/       run wrapper, nnU-Net baseline, throughput benchmark, table reproduction
 results/       per-run configurations, training histories and per-case metrics
@@ -239,6 +308,8 @@ results/       per-run configurations, training histories and per-case metrics
   fixed_workload_rtx4090/    fixed-workload training throughput and memory measurements
   revision_v2/               FP32 reruns, controls, recipe sensitivity, readout study,
                              common improved protocol and external evaluation
+  label_efficiency/          label-budget runs: dino/f010, f025, f100 and nnunet/le_f*_seed*
+  decoder_study/             hierarchical-decoder runs (dino/f100, f010) and nnunet2d/ref2d_seed*
   summary/                   per_case_test.csv (test Dice/IoU of every run and case) and runs.csv
 assets/        figure shown in this README
 tests/         CPU unit tests (synthetic tensors only)
@@ -272,20 +343,25 @@ available from the corresponding author upon reasonable request.
   estimated GPU-hours derived from them, not through recorded wall-clock time.
 - The recipe-sensitivity analyses, the common improved protocol and the external evaluation were
   defined after the main test results were known and are reported as post hoc analyses.
+- The label-budget and decoder studies were specified (subsets, cells, seeds, contrasts) before
+  their first run, but after the main results; they are also post hoc with respect to the main
+  results. Their models were not evaluated on the external datasets.
+- The external sensitivity analysis without the volume on which nnU-Net fails was defined after
+  the external results were known.
 
 ---
 
 ## Citation
 
-The paper is under review. Citation details will be added after publication; `CITATION.cff`
-provides the metadata used by GitHub's "Cite this repository" button.
+The manuscript is in preparation and has not been published. Citation details will be added after
+publication; `CITATION.cff` provides the metadata used by GitHub's "Cite this repository" button.
 
 ```bibtex
 @article{be2026adadinola,
   title   = {AdaDINO-LA: A Controlled Study of DINOv2 Adaptation Strategies for Left Atrial
              Segmentation in LGE-MRI},
   author  = {Be, Quoc Khanh and Tran, Nam Hai and Nguyen, Gia Duc Trung and Dao Thi Thuy, Quynh},
-  note    = {Under review},
+  note    = {Manuscript in preparation},
   year    = {2026}
 }
 ```
