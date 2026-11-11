@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "fingerprint": "05928e5a4764438d095a59b794c6b05659d3fdd5a2307bf7f11ee1f6fbf9fd5c",
+  "identity": {
+    "fingerprint": "05928e5a4764438d095a59b794c6b05659d3fdd5a2307bf7f11ee1f6fbf9fd5c",
+    "cell": "V_LO",
+    "seed": 42,
+    "fraction": 10
+  },
+  "stats": {
+    "train_seconds": 11.913885154001036,
+    "train_loss": 0.6686713856458664,
+    "slices": 400,
+    "successful_updates": 100,
+    "skipped_updates": 0,
+    "batch_order_sha256": "68b043e008213026e261e641207f53e671a7c5e45d0dcb8aa8fac17addad71d2",
+    "epoch": 1,
+    "validation_seconds": 20.64115293100258,
+    "validation_dice": 0.5788026817357677,
+    "validation_loss": 0.6140255373535735,
+    "peak_allocated_bytes": 4930440192,
+    "peak_reserved_bytes": 5314183168,
+    "gpu_snapshot": "GPU-e718cb7b-8bb7-ded5-bb93-1975a8b73c84, 25732, 32607, 99",
+    "checkpoint_seconds": 0.026687471003242536
+  },
+  "test_evaluated": false,
+  "checks": [
+    "readout_parity",
+    "parameter_count",
+    "successful_gradient_audit",
+    "finite_state",
+    "save_reload",
+    "augmented_batches"
+  ]
+}

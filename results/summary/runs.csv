@@ -1,4 +1,16 @@
 run,test_cases,mean_dice_3d,gpu,torch
+augmentation_study/dino/f010/V_LO/seed2026,31,0.878259,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f010/V_LO/seed3407,31,0.891746,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f010/V_LO/seed42,31,0.883944,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f010/V_SC/seed2026,31,0.505055,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f010/V_SC/seed3407,31,0.602377,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f010/V_SC/seed42,31,0.422216,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f100/V_LO/seed2026,31,0.902818,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f100/V_LO/seed3407,31,0.909292,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f100/V_LO/seed42,31,0.910304,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f100/V_SC/seed2026,31,0.708510,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f100/V_SC/seed3407,31,0.688978,NVIDIA GeForce RTX 5090,2.11.0+cu128
+augmentation_study/dino/f100/V_SC/seed42,31,0.681002,NVIDIA GeForce RTX 5090,2.11.0+cu128
 decoder_study/dino/f010/D_FU/seed2026,31,0.851898,NVIDIA GeForce RTX 5090,2.11.0+cu128
 decoder_study/dino/f010/D_FU/seed3407,31,0.862568,NVIDIA GeForce RTX 5090,2.11.0+cu128
 decoder_study/dino/f010/D_FU/seed42,31,0.846145,NVIDIA GeForce RTX 5090,2.11.0+cu128

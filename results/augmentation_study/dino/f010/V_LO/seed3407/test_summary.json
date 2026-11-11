@@ -1,0 +1,29 @@
+{
+  "method": "V_LO",
+  "seed": 3407,
+  "num_patients": 31,
+  "num_slices": 2728,
+  "threshold": 0.5,
+  "postprocessing": "none",
+  "dice_3d": {
+    "mean": 0.8917455320940472,
+    "std": 0.031225396688138483,
+    "min": 0.8184409321514189,
+    "max": 0.9359298206380589
+  },
+  "iou_3d": {
+    "mean": 0.8060000039175106,
+    "std": 0.049911796248116404,
+    "min": 0.6926788126146424,
+    "max": 0.87957527500609
+  },
+  "inference_total_seconds": 35.25104089974775,
+  "inference_ms_per_slice": 12.921935813690524,
+  "hd95_header_units": {
+    "mean": 8.881934252595052,
+    "std": 4.907466963489987,
+    "min": 3.605551275463989,
+    "max": 22.045407685048602
+  },
+  "hd95_warning": "Local NRRD headers report 1 mm spacing; treat HD95 as exploratory header-unit output until spatial provenance is verified."
+}
