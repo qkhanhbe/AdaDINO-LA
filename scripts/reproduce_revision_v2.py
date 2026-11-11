@@ -277,7 +277,7 @@ def robustness_table(report):
         a, b = c['all31'], c['least_similar']
         h = c['case_seed_ci95_pp']
         lines.append(f"{label} & {fmt_cell(a)} & $[{num(h[0])},\\,{num(h[1])}]$ & {fmt_cell(b)} & "
-                     f"{c['r_similarity_difference']:+.2f}\\\\")
+                     f"${c['r_similarity_difference']:+.2f}$\\\\")
     lines += [r'\bottomrule\end{tabularx}', r'\end{table}', '']
     return '\n'.join(lines)
 
@@ -358,9 +358,10 @@ def paired_table(report):
              r'between two Giant $-$ Large scale gains. Seeds are averaged within case. 95\% percentile case-bootstrap '
              r'CIs use 20,000 resamples (RNG seed 20260926, reset for each contrast and subset); $p_{\mathrm{Holm}}$ '
              r'adjusts two-sided bootstrap $p$ values over the 16 contrasts shown. Per-seed differences are given for '
-             r'every contrast because the case bootstrap does not include retraining variance. Intervals are '
-             r'conditional on the observed runs and assume exchangeable test volumes; patient independence is '
-             r'unverified. The 30-case column excludes the identified near-duplicate without retraining.}',
+             r'every contrast because the case bootstrap does not include retraining variance. CIs are not Holm-adjusted, and $p_{\mathrm{Holm}}$ of 0.042 to 0.045 are borderline. Intervals are '
+             r'conditional on the observed runs and assume exchangeable test volumes. The 30-case column excludes the identified near-duplicate without retraining. '
+             r'Rows involving Large~Full~FT or Giant~LoRA compare runs on different GPU models or software stacks (Supplementary Table~\ref{tab:provenance}); '
+             r'differences within the cross-GPU retraining variation (0.38 to 0.60 points) are not interpreted as effects.}',
              r'\label{tab:paired}', r'\begin{tabularx}{\linewidth}{@{}Xrrrr@{}}',
              r'\toprule Comparison & 31 cases: $\Delta$ [95\% CI] & $p_{\mathrm{Holm}}$ & Per seed & '
              r'30 cases: $\Delta$ [95\% CI]\\ \midrule']
@@ -380,7 +381,7 @@ def paired_table(report):
     return '\n'.join(lines) + '\n'
 
 
-def protocol_v2_table(report):
+def protocol_v2_table(report, meta):
     s, o = report['summaries'], report['other_effects']
 
     def pm(key):
@@ -409,7 +410,20 @@ def protocol_v2_table(report):
     for name, label in (('V2: Full FT - LoRA', 'Full FT $-$ LoRA'), ('V2: LoRA - Partial FT', 'LoRA $-$ Partial FT'),
                         ('V2: Partial FT - Frozen', 'Partial FT $-$ Frozen'), ('V2: Full FT - Frozen', 'Full FT $-$ Frozen')):
         lines.append(f"\\quad {label} & & & {cells(name)}\\\\")
-    lines += [r'\bottomrule\end{tabularx}', r'\end{table}', '']
+    keys = ['V2_FR', 'V2_PA', 'V2_LO', 'V2_FU']
+    mem = ', '.join(f"{meta[k][0]['peak_gb']:.2f}" for k in keys[:3]) + f", and {meta['V2_FU'][0]['peak_gb']:.2f}"
+    assert all(abs(m['peak_gb'] - meta[k][0]['peak_gb']) < 0.01 for k in keys for m in meta[k])
+    eps = [' / '.join(str(m['epochs']) for m in meta[k]) for k in keys]
+    hrs = [(float(np.mean([m['train_hours'] for m in meta[k]])), float(np.std([m['train_hours'] for m in meta[k]], ddof=1)))
+           for k in keys]
+    mpe = [60 * sum(m['train_hours'] for m in meta[k]) / sum(m['epochs'] for m in meta[k]) for k in keys]
+    lines += [r'\bottomrule\end{tabularx}',
+              r'\par\smallskip{\raggedright\footnotesize Measured in these runs (one RTX 5090; Frozen, Partial FT, LoRA, '
+              f'Full FT): peak allocated memory {mem} GB; epochs completed {eps[0]}, {eps[1]}, {eps[2]}, and {eps[3]}; '
+              'training time excluding validation and checkpoint writing '
+              + ', '.join(f'\\pmv{{{m:.2f}}}{{{s:.2f}}}' for m, s in hrs[:3]) + f', and \\pmv{{{hrs[3][0]:.2f}}}{{{hrs[3][1]:.2f}}} '
+              'hours (mean $\\pm$ SD over seeds), or ' + ', '.join(f'{v:.1f}' for v in mpe[:3]) + f', and {mpe[3]:.1f} '
+              'minutes per epoch.\\par}', r'\end{table}', '']
     return '\n'.join(lines)
 
 
@@ -465,7 +479,8 @@ def recipe_external_tables(report):
         e = ext[k]
 
         def m(sub):
-            return f"\\pmv{{{e[sub]['mean']:.3f}}}{{{e[sub]['sample_sd']:.3f}}}"
+            sd = e[sub]['sample_sd']
+            return f"\\pmv{{{e[sub]['mean']:.3f}}}{{{sd:.3f}}}" if sd >= 0.0005 else f"\\pmv{{{e[sub]['mean']:.3f}}}{{{sd:.4f}}}"
 
         def dlt(sub):
             return '--' if k == 'nnU-Net' else ci1(e[sub]['minus_nnunet'])
@@ -509,11 +524,11 @@ def figure_envs():
         ('fig:revision-cases', 'Empirical cumulative distributions of seed-averaged paired Dice differences for all '
          '31 cases. Every marker is one case; the outlined marker identifies the flagged near-duplicate. Positive '
          'values favor the first configuration.'),
-        ('fig:revision-pareto', 'Observed trade-offs between accuracy and (a) peak training memory, (b) training '
-         'time, and (c) trainable parameters under the main protocol. Dice is the three-seed mean with sample SD bars; '
+        ('fig:revision-pareto', 'Observed trade-offs between accuracy and (a) peak training memory, (b) time per '
+         '100 training batches, and (c) trainable parameters under the main protocol. Dice is the three-seed mean with sample SD bars; '
          'resources come from the fixed workload (batch 4, 448 by 448, RTX 4090, three repeats of 100 batches). Dashed '
-         'lines mark the observed nondominated points in each panel. L and G denote ViT-Large and ViT-Giant; FT, '
-         'fine-tuning. Large Full FT (*) had one skipped optimizer update during the benchmark.')]
+         'lines mark the observed nondominated points in each panel. L (blue) and G (orange) denote ViT-Large and ViT-Giant; FT, '
+         'fine-tuning. Large Full FT (*) had one skipped optimizer update during the benchmark. Frontiers ignore uncertainty: several Dice differences along them are within the seed SD.')]
     files = []
     for group in (zip(FIGURES[:2], captions[:2]), zip(FIGURES[2:], captions[2:])):
         tex = [r'% Generated by scripts/analyze_revision_v2_20261021.py.']
@@ -535,7 +550,7 @@ def plot(report, outdir):
         plt.close(fig)
 
     eff = report['rq1_paired_effects']
-    fig, ax = plt.subplots(figsize=(9, 8))
+    fig, ax = plt.subplots(figsize=(7.6, 7.0))
     names, positions, ticks, labels, y = [], [], [], [], 0.0
     for title, rows in TABLE_GROUPS:
         ticks.append(y); labels.append(title.replace('$-$', '−')); y += 1
@@ -561,7 +576,7 @@ def plot(report, outdir):
 
     lab = {n: l.replace('$-$', '−') for _, rows in TABLE_GROUPS for n, l in rows}
     ids = report['case_ids']
-    fig, axes = plt.subplots(1, 3, figsize=(11, 3.5), sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(8.2, 3.2), sharey=True)
     for ax, name in zip(axes, ['E6 - E7', 'nnU-Net - E2', 'nnU-Net - E4']):
         d = eff[name]['by_case_pp']; ordered = sorted(d, key=d.get); x = [d[i] for i in ordered]
         yy = np.arange(1, 32)/31
@@ -640,10 +655,14 @@ def run_meta(folder):
         val = [float(r['val_dice_3d_patient_mean']) for r in rows]
         skipped = (sum(int(float(r['skipped_optimizer_updates'])) for r in rows)
                    if rows and 'skipped_optimizer_updates' in rows[0] else None)
+        train_hours = peak_gb = None
     else:
         rows = json.loads((folder / 'history.json').read_text(encoding='utf-8'))
         val = [float(r['validation_dice']) for r in rows]
         skipped = sum(int(r['skipped_updates']) for r in rows)
+        # measured in the run: summed per-epoch training seconds (no validation or checkpoint writing), peak allocation
+        train_hours = sum(float(r['train_seconds']) for r in rows) / 3600
+        peak_gb = max(int(r['peak_allocated_bytes']) for r in rows) / 1e9
     best = int(np.argmax(val)) + 1  # checkpoints are replaced only on a strict increase: first maximum
     mdd = max(max(val[:t + 1]) - val[t] for t in range(len(val)))
     test = json.loads((folder / 'test_summary.json').read_text(encoding='utf-8'))
@@ -654,6 +673,7 @@ def run_meta(folder):
                                                     if prov.get('dino_source_sha256') else 'unknown')
     return {'epochs': len(val), 'best_epoch': best, 'best_val': max(val), 'mdd': mdd, 'btf': max(val) - val[-1],
             'skipped_updates': skipped, 'hd95': test.get('hd95_header_units', {}).get('mean'),
+            'train_hours': train_hours, 'peak_gb': peak_gb,
             'gpu': GPU_SHORT.get(prov.get('gpu', ''), prov.get('gpu', 'unknown')), 'torch': prov.get('torch'),
             'python': prov.get('python'), 'source': source, 'weights': weights}
 
@@ -667,6 +687,7 @@ def trajectory(folder):
 CURVES = [('Large Frozen', 'E1'), ('Large Partial FT', 'E3'), ('Large LoRA', 'E6'), ('Large Full FT', 'E2'),
           ('Giant Frozen', 'E5'), ('Giant LoRA', 'E4')]
 SEED_STYLE = {42: ('blue!75!black', 'solid'), 2026: ('orange!90!black', 'dashed'), 3407: ('green!50!black', 'dashdotted')}
+SEED_MARK = {42: '*', 2026: 'square*', 3407: 'triangle*'}
 
 
 def learning_curves():
@@ -695,7 +716,7 @@ def learning_curves():
             if i == 0:
                 full.append(f'\\addlegendentry{{Seed {s}}}')
             zoom.append(f'\\addplot[{color},{dash},no marks,thick] coordinates {{{coords(points)}}};')
-            zoom.append(f'\\addplot[only marks,mark=*,mark size=2pt,{color}] coordinates {{{coords([(best, val[best - 1])])}}};')
+            zoom.append(f'\\addplot[only marks,mark={SEED_MARK[s]},mark size=2pt,{color}] coordinates {{{coords([(best, val[best - 1])])}}};')
     full += [r'\end{groupplot}', r'\end{tikzpicture}',
              r'\caption{Recorded validation-volume Dice for the six main-protocol configurations other than Giant '
              r'Partial FT, whose trajectories appear in Figure~\ref{fig:e7-curves}. All 18 trajectories (six '
@@ -781,32 +802,25 @@ def gen_tables(report, meta):
     sens += [r'\bottomrule', r'\end{tabular*}', r'\end{table}']
     out['tab_seeds.tex'] = '\n'.join(seeds) + '\n'
     out['tab_sensitivity.tex'] = '\n'.join(sens) + '\n'
-    # Efficiency table (fixed-workload memory; GPU-hour estimates from completed epochs).
+    # Efficiency table: measured fixed-workload memory and time per batch, completed epochs (no time estimates).
     eff = [r'% Generated by scripts/analyze_revision_v2_20261021.py; do not edit by hand.',
            r'\begin{table}[!htbp]', r'\centering\small',
-           r'\caption{Trainable parameters, peak allocated training memory and estimated training cost under the main '
-           r'protocol. Peak memory is the largest allocated peak of the fixed-workload benchmark '
-           r'(Table~\ref{tab:fixedworkload}). GPU-hours are estimates on the RTX 4090 reference: measured fixed-workload '
-           r'seconds per training batch $\times$ 2,376 batches per epoch $\times$ epochs completed, in total or up to the '
-           r'validation-selected checkpoint; mean $\pm$ SD across seeds, where the SD reflects only the number of epochs '
-           r'completed before early stopping. Validation, checkpoint writing and test inference are excluded.}',
+           r'\caption{Trainable parameters, peak allocated training memory, time per 100 training batches, and completed '
+           r'epochs under the main protocol. Memory and time are measured in the fixed-workload benchmark on one RTX 4090 '
+           r'(Table~\ref{tab:fixedworkload}); epochs are those completed before early stopping, in seed order '
+           r'42/2026/3407. Wall-clock training times of the main-protocol runs are not compared because the runs used '
+           r'different GPU models.}',
            r'\label{tab:efficiency}', r'\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrccc@{}}', r'\toprule',
            r'Backbone & Adaptation & \shortstack{Trainable\\parameters} & \shortstack{Peak memory\\(GB)} & '
-           r'\shortstack{GPU-hours\\(total)} & \shortstack{GPU-hours\\(to best)}\\ \midrule']
-
-    def hours(k, field):
-        sec = res['E1' if k == 'E0' else k]['seconds_per_100_batches'] / 100
-        v = [sec * 2376 * m[field] / 3600 for m in meta[k]]
-        return float(np.mean(v)), float(np.std(v, ddof=1))
+           r'\shortstack{Seconds per\\100 batches} & Epochs\\ \midrule']
     for i, (bb, ad, k) in enumerate(ORDER):
-        ht, hb = hours(k, 'epochs'), hours(k, 'best_epoch')
-        eff.append(f"{bb} & {ad} & {TRAINABLE[k]:,} & {res[k]['allocated_gb']:.3f} & {pm(*ht, nd=2)} & "
-                   f"{pm(*hb, nd=2)}\\\\" + (r' \midrule' if i == 3 else ''))
-    h0t, h0b = hours('E0', 'epochs'), hours('E0', 'best_epoch')
+        eff.append(f"{bb} & {ad} & {TRAINABLE[k]:,} & {res[k]['allocated_gb']:.3f} & "
+                   f"{res[k]['seconds_per_100_batches']:.1f} & " + ' / '.join(str(m['epochs']) for m in meta[k])
+                   + '\\\\' + (r' \midrule' if i == 3 else ''))
     eff += [r'\bottomrule', r'\end{tabular*}',
             r'\par\smallskip{\raggedright\footnotesize The BCE-only frozen control has the Large Frozen architecture '
-            f"(655,329 trainable parameters, {res['E1']['allocated_gb']:.3f} GB); using the Large Frozen throughput, its "
-            f"estimated cost is {pm(*h0t, nd=2)} GPU-hours in total and {pm(*h0b, nd=2)} to the selected checkpoint.\\par}}",
+            f"(655,329 trainable parameters, {res['E1']['allocated_gb']:.3f} GB) and completed "
+            + ' / '.join(str(m['epochs']) for m in meta['E0']) + ' epochs.\\par}',
             r'\end{table}']
     out['tab_efficiency.tex'] = '\n'.join(eff) + '\n'
     # Training-length table.
@@ -891,16 +905,8 @@ def audit_supplement(report, meta):
            f"{o['difference_pp']:.3f} percentage points (95\\% CI [{o['ci95_pp'][0]:.3f}, {o['ci95_pp'][1]:.3f}]), using "
            r'the same seed-averaged case bootstrap as the main analysis. This post-hoc comparison is limited to Large '
            r'frozen features and changes the BCE coefficient as well as the Dice term.', '',
-           r'\subsection*{Exploratory surface summaries}', '',
-           r'Physical spacing has not been independently verified. The summaries below use image-header units and are '
-           r'provided without best-value highlighting; they do not support physical-distance or boundary-superiority '
-           r'claims.', '',
-           r'\begin{table}[!htbp]', r'\centering\small',
-           r'\caption{Exploratory HD95 summaries in header units; mean $\pm$ sample SD across seeds.}', r'\label{tab:surface}',
-           r'\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lc@{}}', r'\toprule'] + hd + [
-           r'\bottomrule', r'\end{tabular*}', r'\end{table}', '',
            r'\subsection*{Validation-trajectory summaries}', '',
-           r'\begin{table}[!htbp]', r'\centering\small',
+           r'\begin{table}[!htbp]', r'\centering\scriptsize',
            r'\caption{Post-hoc validation stability on the full recorded trajectory. MDD (maximum drawdown) is the '
            r'largest fall of validation Dice below an earlier value; BTF (best-to-final deterioration) is the best minus '
            r'the final validation Dice. Both are Dice differences on the 0--1 scale. Best epoch is derived from the '
@@ -958,7 +964,8 @@ def main():
     recipe_tab, external_tab = recipe_external_tables(report)
     (out / 'tab_recipe.tex').write_text(recipe_tab, encoding='utf-8')
     (out / 'tab_external.tex').write_text(external_tab, encoding='utf-8')
-    (out / 'tab_protocol_v2.tex').write_text(protocol_v2_table(report), encoding='utf-8')
+    meta = all_meta()
+    (out / 'tab_protocol_v2.tex').write_text(protocol_v2_table(report, meta), encoding='utf-8')
     (out / 'tab_robustness.tex').write_text(robustness_table(report), encoding='utf-8')
     contrasts_fig, pareto_fig = figure_envs()
     (out / 'revision_analysis_20261006.tex').write_text(contrasts_fig, encoding='utf-8')
@@ -966,7 +973,6 @@ def main():
     curves_full, curves_zoom = learning_curves()
     (out / 'learning_curves.tex').write_text(curves_full, encoding='utf-8')
     (out / 'learning_curves_zoom.tex').write_text(curves_zoom, encoding='utf-8')
-    meta = all_meta()
     for name, content in gen_tables(report, meta).items():
         (out / name).write_text(content, encoding='utf-8')
     (out / 'audit_supplement.tex').write_text(audit_supplement(report, meta), encoding='utf-8')
