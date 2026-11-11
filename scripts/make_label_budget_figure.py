@@ -16,7 +16,7 @@ VOLUMES = {"f010": 11, "f025": 27, "f100": 108}
 # (key, legend, colour (Okabe-Ito), mark)
 SERIES = [
     ("nnU-Net", "nnU-Net (3D, augmented)", "0,0,0", "triangle*"),
-    ("V_FU", "Full FT", "213,94,0", "*"),
+    ("V_FU", "Full FT", "0,114,178", "*"),  # Okabe-Ito blue: separable from LoRA orange with red-green deficiency
     ("V_LO", "LoRA", "230,159,0", "square*"),
     ("V_PA", "Partial FT", "0,158,115", "diamond*"),
     ("V_FR", "Frozen", "86,180,233", "pentagon*"),
